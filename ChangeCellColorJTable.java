@@ -26,8 +26,8 @@ public class ChangeCellColorJTable extends javax.swing.JFrame {
         };
         for(i = 0;i < 4;i++ ){
             for(j = 0;j<2;j++){
-                mytable.setValueAt(data[i][j], i, j);
-                table_value[i][j] = data[i][j];
+                mytable.setValueAt(data[i][j], i, j);       //jtable Values
+                table_value[i][j] = data[i][j];             //2D array values
             }
         }
         for(i = 0;i<4;i++){
@@ -124,9 +124,10 @@ class Custom_Renderer extends DefaultTableCellRenderer
     {
         Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         Object value_present = table.getValueAt(row, column);
-        Object value_in_table = ChangeCellColorJTable.table_value[row][column];
+        Object value_in_table = ChangeCellColorJTable.table_value[row][column]; //This Array is used to get the condition working
         if(value_present.equals(value_in_table)){
             Color color = ChangeCellColorJTable.table_color[row][column];
+            //Here We Could change color of Background or Foreground or FontColor
             cellComponent.setBackground(color);
         }else{
             cellComponent.setBackground(Color.blue);
